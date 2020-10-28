@@ -1,24 +1,125 @@
-# README
+ ## hospital_reviews
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> This project it was built on top of my knowledge of RoR and React.
+<!-- > Idea and design by [Gregoire Veila](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details) -->
 
-Things you may want to cover:
+![screenshot]()
 
-* Ruby version
+## What it does
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## Built With
 
-* Database initialization
+- Ruby v2.6.5
+- Ruby on Rails v5.2.4
 
-* How to run the test suite
+*Gems used:*
 
-* Services (job queues, cache servers, search engines, etc.)
+- Devise (for user authentication)
+- Simple_form
+- Omniauth
+- Omniauth - Facebook
+- Faker
+- Will Paginate
+- Gems used for testing:
+  - Capybara
+  - Selenium webdriver
+  - Chromedriver helper
+  - Database cleaner
+  - Rspec-rails
+  - Shoulda matchers
 
-* Deployment instructions
+- Rubocop
 
-* ...
+## Live Demo
+
+[Live Demo Link]()
+
+## Video Presentation
+
+[![Watch the video](/app/assets/images/video.png)](
+
+
+## Getting Started
+
+To get a local copy up, clone it and running follow these simple example steps.
+
+### Prerequisites
+
+- Ruby: 2.7.1
+- Rails:  6.0.3.4
+- Postgres: >= 9.5
+
+### Setup
+
+Install gems with:
+
+``` bash
+bundle install
+```
+
+Setup database with:
+
+``` bash
+   rails db:create
+   rails db:migrate
+   rails db:seed
+```
+
+Create users with:
+
+
+### Usage
+
+Start server with:
+
+``` bash
+    rails server
+```
+
+Open `http://localhost:3000/` in your browser.
+
+### Run tests
+
+``` bash
+    rpsec
+```
+
+### Deployment
+
+- App deployed in Heroku.
+
+## Author
+
+👤 **Kelly Booster**
+
+- Github: [@kelibst](https://github.com/kelibst)
+- Twitter: [@keli_booster](https://twitter.com/keli_booster)
+- Linkedin: [Kekeli (Jiresse) Dogbevi
+](https://www.linkedin.com/in/kekeli-dogbevi-958272108/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome! Start by:
+
+- Forking the project.
+- Cloning the project to your local machine.
+- cd into the project directory.
+- Run git checkout -b your-branch-name.
+- Make your contributions.
+- Push your branch up to your forked repository.
+- Open a Pull Request with a detailed description to the development branch of the original project for a review.
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+- [Gregoire Veila](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details)
+
+## 📝 License
+
+No license.
