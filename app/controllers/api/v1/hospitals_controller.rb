@@ -40,7 +40,7 @@ module  Api
 
         private 
         def set_hospital
-            @hospital = Hospital.find(params[:id])
+            @hospital = Hospital.find_by(slug: params[:id])
         end
 
         def hospitals_params

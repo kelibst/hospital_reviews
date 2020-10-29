@@ -1,6 +1,8 @@
 class Hospital < ApplicationRecord
   has_many :reviews
 
+  validates :name, presence: true, uniqueness: true
+
   before_create :slugify
 
   def slugify

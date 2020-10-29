@@ -3,19 +3,19 @@
     # content-type: application/json
 
     # #GET single book
-    # GET  http://127.0.0.1:3000/api/v1/hospitals/1.json HTTP/1.1
+    # GET  http://127.0.0.1:3000/api/v1/hospitals/kekeli-hospital.json HTTP/1.1
     # content-type: application/json
     
     #create a new book
-    POST http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
-    content-type: application/json
+    # POST http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
+    # content-type: application/json
 
-    {
-        "name":"Kekeli Hospital",
-        "country":"Ghana",
-        "address":"Ho Housing",
-        "image": "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
-    }
+    # {
+    #     "name":"Kekeli Hospital",
+    #     "country":"Ghana",
+    #     "address":"Ho Housing",
+    #     "image": "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
+    # }
 
     #delete a book
 
