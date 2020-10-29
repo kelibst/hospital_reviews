@@ -22,10 +22,31 @@
     # DELETE http://127.0.0.1:3000/api/v1/hospitals/delali-hospital.json HTTP/1.1
     # content-type: application/json
 
+    #update a hospital record
+
+    # PATCH http://127.0.0.1:3000/api/v1/hospitals/kekeli-hospital.json HTTP/1.1
+    # content-type: application/json
+
+    # {
+    #     "image": "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
+    # }
+
     # Review test
 
-    # GET list of all review in json format
-    GET  http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
-    content-type: application/json
+    # # GET list of all review in json format
+    # GET  http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
+    # content-type: application/json
 
+
+    #create a new review
+    # POST http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
+    # content-type: application/json
+
+    # {
+    #     "reviewer_name":"Kekeli Hospital",
+    #     "title":"Great hospital",
+    #     "description":"some long description about this crazy review. blah blah blah!",
+    #     "score": 3,
+    #     "hospital": 3
+    # }
 

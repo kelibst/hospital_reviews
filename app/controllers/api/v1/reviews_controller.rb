@@ -46,7 +46,7 @@ module  Api
           end
 
           def reviews_params
-            params.require(:hospital).permit(:revier_name, :title, :description, :score)
+            params.require(:hospital).permit(:reviewer_name, :title, :description, :score, :hospital_id)
           end
 
         end
