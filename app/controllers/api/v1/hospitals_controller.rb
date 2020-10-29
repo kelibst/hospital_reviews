@@ -2,7 +2,7 @@ module  Api
   module V1
     class HospitalsController < ApplicationController
       before_action :set_hospital, only: [:show, :edit, :update, :destroy]
-
+        protect_from_forgery with: :null_session
       def index
         @hospitals = Hospital.all
       end
@@ -14,7 +14,7 @@ module  Api
       end
 
       def create 
-            hospital = hospital.new(hospitals_params)
+            hospital = Hospital.new(hospitals_params)
             if hospital.save
                 render json: hospital, status: :created
             else
