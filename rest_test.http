@@ -1,0 +1,24 @@
+    # GET list of all hospital in json format
+    GET  http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
+    content-type: application/json
+
+    # #GET single book
+    # GET  http://127.0.0.1:3000/api/v1/hospitals/1.json HTTP/1.1
+    # content-type: application/json
+    
+    #create a new book
+    # POST http://127.0.0.1:3000/api/v1/books HTTP/1.1
+    # content-type: application/json
+
+    # {
+    #     "title":"Listen again 3",
+    #     "author":"Keli Booster",
+    #     "descriiption":"Some nice book by Keli 1"
+    # }
+
+    #delete a book
+
+    # DELETE http://127.0.0.1:3000/api/v1/books/2 HTTP/1.1
+    # content-type: application/json
+
+
