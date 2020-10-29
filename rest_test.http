@@ -2,7 +2,7 @@
     # GET  http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
     # content-type: application/json
 
-    # #GET single book
+    #GET single book
     # GET  http://127.0.0.1:3000/api/v1/hospitals/kekeli-hospital.json HTTP/1.1
     # content-type: application/json
     
@@ -17,9 +17,15 @@
     #     "image": "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
     # }
 
-    #delete a book
+    #delete a hospital
 
-    # DELETE http://127.0.0.1:3000/api/v1/books/2 HTTP/1.1
+    # DELETE http://127.0.0.1:3000/api/v1/hospitals/delali-hospital.json HTTP/1.1
     # content-type: application/json
+
+    # Review test
+
+    # GET list of all review in json format
+    GET  http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
+    content-type: application/json
 
 

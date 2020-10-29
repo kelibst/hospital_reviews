@@ -18,7 +18,7 @@ module  Api
             if hospital.save
                 render json: hospital, status: :created
             else
-                render json: hospital.errors, status: :unproccessable_entity
+                render json: { error: hospital.errors }, status: :unprocessable_entity 
             end
       end
 
@@ -26,7 +26,7 @@ module  Api
             if @hospital.update(hospitals_params)
                 render json: @hospital, status: :created
             else
-                render json: @hospital.errors, status: :unproccessable_entity
+                render json: {error: @hospital.errors }, status: :unprocessable_entity 
             end
         end
 
@@ -34,7 +34,7 @@ module  Api
             if @hospital.destroy
                 head :no_content
             else
-                render json: @hospital.errors, status: :unproccessable_entity
+                render json: {error: @hospital.errors}, status: :unproccessable_entity
             end
         end
 
