@@ -1,1 +1,1 @@
-json.partial! partial: 'hospital', hospital: @hospital
+json.partial! partial: 'review', review: @review

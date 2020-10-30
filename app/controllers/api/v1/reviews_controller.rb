@@ -1,7 +1,6 @@
 module  Api
     module V1
-        class ReviewsController < ApplicationController
-            
+        class ReviewsController < ApplicationController  
           before_action :set_review, only: [:show, :edit, :update, :destroy]
           protect_from_forgery with: :null_session
           def index
@@ -23,7 +22,7 @@ module  Api
               end
           end
 
-          def update 
+          def update
             if @review.update(reviews_params)
                     render json: @review, status: :created
             else
@@ -46,7 +45,7 @@ module  Api
           end
 
           def reviews_params
-            params.require(:hospital).permit(:reviewer_name, :title, :description, :score, :hospital_id)
+            params.require(:review).permit(:reviewer_name, :title, :description, :score, :hospital_id)
           end
 
         end

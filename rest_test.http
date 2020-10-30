@@ -38,7 +38,7 @@
     # content-type: application/json
 
 
-    #create a new review
+    # create a new review
     # POST http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
     # content-type: application/json
 
@@ -47,6 +47,18 @@
     #     "title":"Great hospital",
     #     "description":"some long description about this crazy review. blah blah blah!",
     #     "score": 3,
-    #     "hospital": 3
+    #     "hospital_id": 2
     # }
 
+    # GET single review
+    # GET  http://127.0.0.1:3000/api/v1/reviews/1.json HTTP/1.1
+    # content-type: application/json
+
+
+    #update a review
+    PATCH http://127.0.0.1:3000/api/v1/reviews/3.json HTTP/1.1
+    content-type: application/json
+
+    {
+        "titile": "awesome title"
+    }
