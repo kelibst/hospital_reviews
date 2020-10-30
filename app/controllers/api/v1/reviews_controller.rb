@@ -24,9 +24,9 @@ module  Api
 
           def update
             if @review.update(reviews_params)
-                    render json: @review, status: :created
+              render json: @review, status: :created
             else
-                    render json: { error: @review.errors }, status: :unprocessable_entity 
+              render json: { error: @review.errors }, status: :unprocessable_entity 
             end
           end
 

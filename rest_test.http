@@ -56,9 +56,15 @@
 
 
     #update a review
-    PATCH http://127.0.0.1:3000/api/v1/reviews/3.json HTTP/1.1
-    content-type: application/json
+    # PATCH http://127.0.0.1:3000/api/v1/reviews/1.json HTTP/1.1
+    # content-type: application/json
 
-    {
-        "titile": "awesome title"
-    }
+    # {
+    #     "title": "awesome new title"
+    # }
+
+
+    # review delete test
+
+    # DELETE http://127.0.0.1:3000/api/v1/reviews/3.json HTTP/1.1
+    # content-type: application/json
