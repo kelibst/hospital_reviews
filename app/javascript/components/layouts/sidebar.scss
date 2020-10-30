@@ -1,0 +1,57 @@
+$default-blue: rgb(79, 76, 233);
+
+@mixin default-gradient {
+    background: rgb(46,34,195);
+    background: linear-gradient(180deg, rgba(46,34,195,1) 0%, rgba(228,45,253,1) 100%); 
+}
+
+@mixin default-gradient-reverse {
+    background: rgb(46,34,195);
+    background: linear-gradient(0deg, rgba(46,34,195,1) 0%, rgba(228,45,253,1) 100%);
+}
+
+
+.bg{
+    &-default{
+        &-blue{
+            @include default-gradient()
+        }
+    }
+}
+
+.sidebar{
+    color: white;
+    height: 100vh;
+}
+
+
+
+
+
+.header{
+    &-content {
+        text-align: center;
+        font-size: 3rem;
+    
+    &-image {
+        border-radius: 20rem;
+        @include default-gradient-reverse();
+        width: 4.5rem;
+        margin: auto;
+    }
+  }
+  
+  &-title {
+    font-size: 2rem;
+    padding-top: 2rem;
+  }
+
+  &-description {
+    line-height: 1.8;
+    padding-top: 3rem;
+    padding-left: 1.8rem;
+  }
+}
+.nav-icons{
+    font-size: 2rem;
+}
