@@ -57,3 +57,30 @@ $default-blue: rgb(79, 76, 233);
 .nav-icons{
     font-size: 2rem;
 }
+
+.user{
+    &-info {
+        cursor: pointer;
+        display: flex;
+        justify-content: end;
+        padding: 0 1rem;
+    }
+
+    &-logo {
+        padding: .5rem .7rem;
+        background: aliceblue;
+        border-radius: 3rem;
+        border: 1px solid blueviolet;
+        margin-right: 1rem;
+    }
+
+    &-ui-user {
+        font-size: 1.3rem;
+    }
+
+    &-name {
+        font-weight: bolder;
+        align-self: center;
+        font-size: 1.5rem;
+    }
+}

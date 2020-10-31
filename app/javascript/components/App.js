@@ -6,15 +6,19 @@ import {
 import Hospital from './Hospital/Hospital';
 import Hospitals from './Hospitals/Hospitals';
 import Sidebar from './layouts/Sidebar';
+import UserInfo from './layouts/UserInfo';
 
 const App = () => {
     return (
         <div className="wrapper d-sm-flex">
             <Sidebar />
-            <Switch>
-                <Route exact path="/" component={Hospitals} />            
-                <Route exact path="/hospitals/:slug" component={Hospital} />
-            </Switch>
+            <div className="content bg-light">
+                <UserInfo />
+                <Switch>
+                    <Route exact path="/" component={Hospitals} />            
+                    <Route exact path="/hospitals/:slug" component={Hospital} />
+                </Switch> 
+            </div>
         </div>
        
     )

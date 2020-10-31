@@ -6,7 +6,7 @@ import './sidebar.scss'
 
 const Sidebar = () => {
     return (
-        <aside className="sidebar bg-default-blue col col-md-4">
+        <aside className="sidebar bg-default-blue col-sm-4 col-md-3 col-xl-2">
             <header className="mt-5">
                 <div className="header-content">
                     <div className="header-content-image">
