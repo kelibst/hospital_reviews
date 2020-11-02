@@ -2,11 +2,11 @@
     # GET  http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
     # content-type: application/json
 
-    #GET single book
+    #GET single hospital
     # GET  http://127.0.0.1:3000/api/v1/hospitals/kekeli-hospital.json HTTP/1.1
     # content-type: application/json
     
-    #create a new book
+    #create a new hospital
     # POST http://127.0.0.1:3000/api/v1/hospitals.json HTTP/1.1
     # content-type: application/json
 

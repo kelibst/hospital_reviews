@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const HospitalList = ({ data }) => {
 
-    console.log(data)
     return (
         <div className="hospital card shaddow-sm p-0 m-2 col-sm-3 col-xl-2">
             <div className="hospital-image">

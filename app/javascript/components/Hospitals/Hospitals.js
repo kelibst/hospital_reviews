@@ -7,7 +7,7 @@ const Hospitals = () => {
 
     
     useEffect(() => {
-        // get the all the hospitals
+        // get all the hospitals
 
         Axios.get('api/v1/hospitals.json')
         .then(res => {
