@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const Hospital = (props) => {
      const [hospital, setHospital] = useState([])
-        const { slug } = props.match.params
+    const { slug } = props.match.params
      useEffect(() => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
@@ -27,9 +27,7 @@ const Hospital = (props) => {
             <div className="card-body">
                 <div className="card-sc-btn">{ hospital.body.address }</div>
                 <div className="card-sc-btn">{ hospital.body.country }</div>
-            </div>
-
-            
+            </div> 
         </div>
         
             <div className="card reviews my-3">
@@ -43,7 +41,7 @@ const Hospital = (props) => {
                                 <div className="card-body">
                                     { review.description}
                                 </div>
-                                <div className="review-score">{ review.score }</div>
+                                <div className="review-score card-sc-btn">{ review.score }</div>
                             </div>
                         ))
                         
