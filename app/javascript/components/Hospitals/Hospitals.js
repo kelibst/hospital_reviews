@@ -11,7 +11,7 @@ const Hospitals = () => {
 
         Axios.get('api/v1/hospitals.json')
         .then(res => {
-            console.log(res)
+            
             setHospitals(res.data)
         }).catch(err => {
             console.log(err)
@@ -24,7 +24,15 @@ const Hospitals = () => {
         (<div className="loading"> Loading</div> )
     )
    
-    return hospitalList;
+    return (
+        <div className="hospital mx-3">
+            <h1 className="text-dark display-5 mb-5 font-weight-bolder"> List of All Hospitals</h1>
+            <div className="row m-0">
+                { hospitalList }
+            </div> 
+        </div>
+        
+    );
     
 }
 
