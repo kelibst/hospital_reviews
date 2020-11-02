@@ -15,12 +15,42 @@ const Hospital = (props) => {
          })
      }, [hospital.length])
 
+        const reviews_all = hospital.reviews ? hospital.reviews.reviews_all : null
+     console.log(reviews_all)
     const displayHospital = hospital.id ? (
-        <div className="card col-sm-10 col-md-8">
-            <h1 className="card-title display-6 text-uppercase text-center font-weight-bolder">{ hospital.name }</h1>
+        <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
+        
+        
+        <div className="card">
+        <img src={hospital.body.image} className="card-img-top" alt="data.name"/>
+            <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ hospital.name }</h1>
             <div className="card-body">
                 <div className="card-sc-btn">{ hospital.body.address }</div>
                 <div className="card-sc-btn">{ hospital.body.country }</div>
+            </div>
+
+            
+        </div>
+        
+            <div className="card reviews my-3">
+                    <h4 className="card-title my-3 text-center text-uppercase">{hospital.name } Reviews</h4>
+                    <div className="card-body">
+                    { reviews_all ? (
+                        reviews_all.map( review => (
+                            <div className="card reviews">
+                            <h4 className="card-title ">{review.title } </h4>
+                            <div className="card-sc-btn"> By{ review.reviewer_name }</div>
+                                <div className="card-body">
+                                    { review.description}
+                                </div>
+                                <div className="review-score">{ review.score }</div>
+                            </div>
+                        ))
+                        
+                    ) : (
+                        <div className="error">No reviews yet</div>
+                    )}
+                    </div>
             </div>
         </div>
     ) : (
@@ -29,7 +59,6 @@ const Hospital = (props) => {
         </div>
     )
 
-    console.log(props)
     return (
         <div className="container">
             { displayHospital }
