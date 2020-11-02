@@ -22,12 +22,29 @@ $default-blue: rgb(79, 76, 233);
 .sidebar{
     color: white;
     height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
 
 
-.nav-item{
-    margin: .7rem 0;
+.nav{
+    &-item{
+        margin: .7rem 0;
+    }
+
+
+    &-link.active, &-link.active:focus {
+        padding: 1rem 0;
+        background: white;
+        border-radius: 1rem;
+        color: black !important;
+        width: 130%;
+    }
+
+    &-icons{
+        font-size: 2rem
+    }
 }
 
 .header{
@@ -54,13 +71,10 @@ $default-blue: rgb(79, 76, 233);
     padding-left: 1.8rem;
   }
 }
-.nav-icons{
-    font-size: 2rem;
-}
 
 .user{
     &-info {
-        cursor: pointer;
+        
         display: flex;
         justify-content: end;
         padding: 0 1rem;
@@ -72,6 +86,14 @@ $default-blue: rgb(79, 76, 233);
         border-radius: 3rem;
         border: 1px solid blueviolet;
         margin-right: 1rem;
+        cursor: pointer;
+        transition: all .2s;
+
+        &:hover{
+            background: violet;
+            color: wheat;
+            border:1px solid black;
+        }
     }
 
     &-ui-user {
