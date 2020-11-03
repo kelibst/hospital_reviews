@@ -1,5 +1,7 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Host from './Host'
+import Review from './Review'
 
 const Hospital = (props) => {
      const [hospital, setHospital] = useState([])
@@ -21,32 +23,18 @@ const Hospital = (props) => {
         <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
         
         
-        <div className="card">
-        <img src={hospital.body.image} className="card-img-top" alt="data.name"/>
-            <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ hospital.name }</h1>
-            <div className="card-body">
-                <div className="card-sc-btn">{ hospital.body.address }</div>
-                <div className="card-sc-btn">{ hospital.body.country }</div>
-            </div> 
-        </div>
+        <Host hospital={hospital}/>
         
-            <div className="card reviews my-3">
-                    <h4 className="card-title my-3 text-center text-uppercase">{hospital.name } Reviews</h4>
+            <div className="card shadow-lg border-0 reviews my-3">
+                    <h4 className="card-title my-3 text-center font-weight-bolder my-3 text-uppercase"> Reviews</h4>
                     <div className="card-body">
                     { reviews_all ? (
-                        reviews_all.map( review => (
-                            <div className="card reviews">
-                            <h4 className="card-title ">{review.title } </h4>
-                            <div className="card-sc-btn"> By{ review.reviewer_name }</div>
-                                <div className="card-body">
-                                    { review.description}
-                                </div>
-                                <div className="review-score card-sc-btn">{ review.score }</div>
-                            </div>
+                        reviews_all && reviews_all.map( review => (
+                            <Review review = {review} key={review.updated_at} />
                         ))
                         
                     ) : (
-                        <div className="error">No reviews yet</div>
+                        <h6 className="error">There was an error!</h6>
                     )}
                     </div>
             </div>

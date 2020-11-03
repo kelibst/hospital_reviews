@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const HospitalList = ({ data }) => {
 
     return (
-        <div className="hospital card shaddow-sm p-0 m-2 col-sm-3 col-xl-2">
+        <div className="hospital card shadow-lg p-0 m-3 col-sm-4 col-xl-3">
             <div className="hospital-image">
                <Link to={`hospitals/${data.body.slug}`}> 
                     <img src={data.body.image} className="card-img-top" alt="data.name"/>
