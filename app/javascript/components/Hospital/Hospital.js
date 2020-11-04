@@ -7,6 +7,7 @@ import ReviewForm from './ReviewForm'
 const Hospital = (props) => {
      const [hospital, setHospital] = useState([])
     const { slug } = props.match.params
+    
      useEffect(() => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
@@ -31,7 +32,7 @@ const Hospital = (props) => {
                     <div className="card-body">
                     { reviews_all ? (
                         reviews_all && reviews_all.map( review => (
-                            <Review review = {review} key={review.updated_at} />
+                            <Review hospital_name = {hospital.name} review = {review} key={review.updated_at} />
                         ))
                         
                     ) : (
@@ -48,7 +49,6 @@ const Hospital = (props) => {
 
     return (
         <div className="container">
-            <ReviewForm />
             { displayHospital }
         </div>
     )
