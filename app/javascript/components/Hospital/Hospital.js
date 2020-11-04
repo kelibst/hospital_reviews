@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Host from './Host'
 import Review from './Review'
+import ReviewForm from './ReviewForm'
 
 const Hospital = (props) => {
      const [hospital, setHospital] = useState([])
@@ -47,6 +48,7 @@ const Hospital = (props) => {
 
     return (
         <div className="container">
+            <ReviewForm />
             { displayHospital }
         </div>
     )
