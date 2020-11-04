@@ -4,6 +4,7 @@ json.name hospital.name
 json.body do
     json.country hospital.country
     json.address hospital.address
+    json.city hospital.city
     json.image hospital.image
     json.slug hospital.slug
 end

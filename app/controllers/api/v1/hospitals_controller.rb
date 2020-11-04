@@ -44,7 +44,7 @@ module  Api
         end
 
         def hospitals_params
-            params.require(:hospital).permit(:name, :country, :address, :image )
+            params.require(:hospital).permit(:name, :country, :address, :city, :image )
         end
 
     end

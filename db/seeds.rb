@@ -6,25 +6,29 @@ Hospital.create([
         {
             name: "HO Royal Hospital",
             country: "Ghana", 
-            address: " ROYAL HOSPITAL, Ho",
+            address: " ROYAL HOSPITAL",
+            city: "Ho",
             image: "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
         },
         {
             name: "HO Polyclinic",
             country: "Ghana", 
             address: "Off Ho - Denu Road",
+             city: "Ho",
             image: "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
         },
         {
             name: "HO Rabito",
             country: "Ghana", 
             address: "Off Ho - Adidome Road",
+             city: "Ho",
             image: "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
         },
         {
             name: "HO Teaching Hospital",
             country: "Ghana", 
             address: "Off Ho - Denu Road",
+             city: "Ho",
             image: "https://www.royalhospitalho.com/my_uploads/2020/03/302bff67-415f-4eb6-b61e-ea95c263635c.jpg"
         }
 ])

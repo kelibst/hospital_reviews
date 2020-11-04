@@ -32,7 +32,7 @@ const Hospital = (props) => {
                     <div className="card-body">
                     { reviews_all ? (
                         reviews_all && reviews_all.map( review => (
-                            <Review hospital_name = {hospital.name} review = {review} key={review.updated_at} />
+                            <Review review = {review} key={review.updated_at} />
                         ))
                         
                     ) : (
