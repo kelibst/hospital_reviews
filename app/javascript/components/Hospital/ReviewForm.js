@@ -3,7 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import './ReviewForm.scss'
 import AddReview from './AddReview'
-const ReviewForm = () => {
+const ReviewForm = (props) => {
+    const { hospital_name } = props
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false)
@@ -17,16 +18,9 @@ const ReviewForm = () => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Review Title</Modal.Title>
+                <Modal.Title>Tell us about your experience at <span className="font-weight-bolder"> { hospital_name } </span> </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                <AddReview />
-                </Modal.Body>
-                <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                </Button>
-                </Modal.Footer>
+                <AddReview close={handleClose} show={handleShow}/>
             </Modal>
         </div>
     )
