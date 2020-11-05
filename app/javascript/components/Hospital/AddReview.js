@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import CountryList from '../../../assets/CountryList'
+
+
+
 const AddReview = (props) => {
+  const [hospital, setHospital] = useState(initialState)
     const { show, close } = props
+
     const handleChange = (e) => {
       const { id, value } = e.target
 
@@ -12,7 +17,7 @@ const AddReview = (props) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(props)
+      
       close()
     }
 
@@ -21,7 +26,7 @@ const AddReview = (props) => {
           <Modal.Body>
             <Form onSubmit={handleSubmit}>  
 
-              <Form.Group controlId="title">
+              <Form.Group controlId="name">
                 <Form.Label>Review title</Form.Label>
                 <Form.Control type="text" placeholder="Great hospital" onChange={handleChange} />
               </Form.Group>
@@ -35,6 +40,11 @@ const AddReview = (props) => {
                 </Form.Control>
               </Form.Group>
 
+              <Form.Group controlId="address">
+                <Form.Label>Enter the address of the hospital</Form.Label>
+                <Form.Control type="text" onChange={handleChange}/>
+              </Form.Group>
+
               <Form.Group controlId="city">
                 <Form.Label>Enter your City Name</Form.Label>
                 <Form.Control type="text" placeholder="Accra" onChange={handleChange}/>
@@ -43,6 +53,11 @@ const AddReview = (props) => {
               <Form.Group controlId="description">
                 <Form.Label>Enter Review Description</Form.Label>
                 <Form.Control placeholder="The nurses here were really great!" as="textarea" rows={3} onChange={ handleChange } />
+              </Form.Group>
+
+              <Form.Group controlId="image">
+                <Form.Label>Enter the hospital image link</Form.Label>
+                <Form.Control type="text" onChange={handleChange}/>
               </Form.Group>
             </Form> 
           </Modal.Body>   
