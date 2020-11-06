@@ -2,7 +2,7 @@ import Axios from "axios";
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import Icofont from "react-icofont";
+import ReactStars from "react-rating-stars-component";
 
 
 
@@ -12,15 +12,15 @@ const AddReview = (props) => {
   const { hospital, show, close } = props;
 
   const handleChange = (e) => {
-    // if(score){
-    //   const sco = {"score": score =null}
-    // }
     const { id, value } = e.target;
     setReview(Object.assign({}, review, { [id]: value }));
     console.log(review)
   };
 
-  const ratingsOptions = [1,2,3,4,5];
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    setReview(Object.assign({}, review, { "score": newRating }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,24 +73,14 @@ const AddReview = (props) => {
             />
           </Form.Group>
 
-          <Form.Group controlId="score">
-            {ratingsOptions.map((score) => {
-              return (
-                <Form.Check
-                  inline
-                  type="radio"
-                  name="rating"
-                  id={score}
-                  value={score}
-                  label={<Icofont icon="star-shape" className="font-weight-bolder stars"/>}
-                  key={score}
-                  onChange={()=>{
-                    setReview(Object.assign({}, review, { "score": score }));
-                  }}
-                />
-              );
-            })}
-          </Form.Group>
+
+          <ReactStars
+            count={5}
+            onChange={ratingChanged}
+            size={42}
+            activeColor="#ffd700"
+          />
+          
         </Form>
       </Modal.Body>
 
