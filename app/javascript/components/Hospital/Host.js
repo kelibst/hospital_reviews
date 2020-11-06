@@ -15,7 +15,7 @@ const Host = (props) => {
                </div>
 
                 <div className="btn-container mx-auto my-5">
-                    <ReviewForm hospital_name = {hospital.name}/>
+                    <ReviewForm hospital = {hospital}/>
                 </div>
             </div> 
         </div>

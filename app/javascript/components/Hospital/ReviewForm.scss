@@ -7,6 +7,19 @@
         position: absolute;
     }
 }
+input{
+    &.form-check-input{
+        display: none;
+    }
+    &:checked ~ label,
+    &:checked ~ label ~ label{
+        color: yellowgreen;
+    }
+}
+.stars{
+    font-size: 3rem;
+    cursor: pointer;
+}
 
 .btn-rev{
     display: flex;

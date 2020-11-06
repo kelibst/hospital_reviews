@@ -13,6 +13,7 @@ const Hospitals = () => {
         .then(res => {
             
             setHospitals(res.data)
+            
         }).catch(err => {
             console.log(err)
         })

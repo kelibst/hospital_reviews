@@ -39,7 +39,7 @@
     # content-type: application/json
 
 
-    # create a new review
+    # # create a new review
     # POST http://127.0.0.1:3000/api/v1/reviews.json HTTP/1.1
     # content-type: application/json
 

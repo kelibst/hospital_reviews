@@ -9,7 +9,7 @@ json.body do
     json.slug hospital.slug
 end
 json.reviews do
-    json.reviews_all hospital.reviews.count < 5 ? hospital.reviews : hospital.reviews.slice(0,5) 
+    json.reviews_all hospital.reviews.count < 5 ? hospital.reviews : hospital.reviews.ordered_by_most_recent.slice(0,5) 
 end
 json.dates do
     json.created_at hospital.created_at
