@@ -14,11 +14,9 @@ const AddReview = (props) => {
   const handleChange = (e) => {
     const { id, value } = e.target;
     setReview(Object.assign({}, review, { [id]: value }));
-    console.log(review)
   };
 
   const ratingChanged = (newRating) => {
-    console.log(newRating);
     setReview(Object.assign({}, review, { "score": newRating }));
   };
 
@@ -34,7 +32,6 @@ const AddReview = (props) => {
         // setReview({title: "", description: "", score: "", reviewer_name: ""})
       })
       .catch((err) => {
-        console.log(err);
         debugger;
       });
     close();
