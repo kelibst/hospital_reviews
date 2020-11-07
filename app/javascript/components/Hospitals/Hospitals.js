@@ -11,7 +11,7 @@ const Hospitals = () => {
 
         Axios.get('api/v1/hospitals.json')
         .then(res => {
-            
+            console.log(res.data)
             setHospitals(res.data)
             
         }).catch(err => {

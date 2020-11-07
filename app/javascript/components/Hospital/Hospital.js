@@ -11,7 +11,6 @@ const Hospital = (props) => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
          .then(res => {
-             console.log(res.data)
              setHospital(res.data)
          }).catch(err => {
              console.log(err)

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import ReactStars from "react-rating-stars-component";
+import ReviewToast from "./ReviewToast";
 
 
 
@@ -10,6 +11,7 @@ const AddReview = (props) => {
   const [review, setReview] = useState({});
   const [validated, setValidated] = useState(false);
   const { hospital, show, close } = props;
+  const [showToast, setShowToast] = useState(true);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -28,8 +30,16 @@ const AddReview = (props) => {
     Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
     Axios.post("/api/v1/reviews.json", { review, hospital_id })
       .then((res) => {
-        console.log(res);
-        // setReview({title: "", description: "", score: "", reviewer_name: ""})
+        console.log("got here");
+
+        if(res.statusText === "Created"){
+          console.log("got here")
+          const toastInfo = {icon: "tick-mark", 
+                      title:"Create Review", 
+                      status: "Success", 
+                      message: "Your Review was successfully created!"};
+          <ReviewToast toastInfo ={toastInfo} />
+        }
       })
       .catch((err) => {
         debugger;
