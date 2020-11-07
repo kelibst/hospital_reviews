@@ -13,7 +13,7 @@ const HospitalList = ({ data }) => {
             <div className="card-body">
                 <h6 className="card-title text-uppercase font-weight-bolder">{ data.name }</h6>
                 { <ReactStars
-                    value={score}
+                    value={Number(score)}
                     count={5}
                     edit={false}
                     size={24}
