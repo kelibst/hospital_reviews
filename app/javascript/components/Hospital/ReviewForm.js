@@ -20,7 +20,7 @@ const ReviewForm = (props) => {
                 <Modal.Header closeButton>
                 <Modal.Title>Tell us about your experience at <span className="font-weight-bolder"> { hospital.name } </span> </Modal.Title>
                 </Modal.Header>
-                <AddReview hospital={hospital} close={handleClose} show={handleShow}/>
+                <AddReview hospital={hospital} initialReview={ {} } status="Add" close={handleClose} show={handleShow}/>
             </Modal>
         </div>
     )

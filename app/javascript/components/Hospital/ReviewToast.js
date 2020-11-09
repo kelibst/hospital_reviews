@@ -4,6 +4,15 @@ import Icofont from 'react-icofont'
 
 const ReviewToast = (props) => {
     const { toastInfo } = {props}
+
+    // if(res.statusText === "Created"){
+    //     console.log("got here")
+    //     const toastInfo = {icon: "tick-mark", 
+    //                 title:"Create Review", 
+    //                 status: "Success", 
+    //                 message: "Your Review was successfully created!"};
+    //     <ReviewToast toastInfo ={toastInfo} />
+    //   }
     return (
         <Toast>
         <Toast.Header>

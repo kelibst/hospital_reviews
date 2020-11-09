@@ -1,11 +1,25 @@
+import Axios from 'axios';
 import React from 'react'
 import Icofont from 'react-icofont';
 import ReactStars from "react-rating-stars-component";
+import UpdateReview from './updateReview';
 
 const Review = (props) => {
     const {review} = props
+    
     const handleClick = (e) =>{
-        console.log(e)
+        const csrfToken = document.querySelector("[name=csrf-token]").content;
+        if(e.target.classList.contains('remove')){
+            Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+            Axios.delete(`/api/v1/reviews/${review.id}.json`)
+            .then(res => {
+                debugger
+            }).catch(err => {
+                debugger
+            })
+        }else if (e.target.classList.contains('update')){
+            
+        }
     }
     return (
         <div className="card p-3 my-3 reviews">
@@ -26,8 +40,8 @@ const Review = (props) => {
                 
             </div>
             <div className="card-foot">
-                <button className="btn btn-danger" onClick={handleClick}>{<Icofont icon="bin"></Icofont>}</button>
-                <button className="btn btn-success" onClick={handleClick}>{<Icofont icon="quill-pen"></Icofont>}</button>
+                <button className="btn border-0 remove" onClick={handleClick}>{<Icofont icon="bin" className="text-danger remove"></Icofont>}</button>
+                <UpdateReview  review = { review } status="Update" />
             </div>
         </div>
     )

@@ -8,10 +8,11 @@ import ReviewToast from "./ReviewToast";
 
 
 const AddReview = (props) => {
-  const [review, setReview] = useState({});
+
   const [validated, setValidated] = useState(false);
-  const { hospital, show, close } = props;
-  const [showToast, setShowToast] = useState(true);
+  const { hospital, initalReview, status, show, close } = props;  
+  review
+  const [review, setReview] = useState(initalReview);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -19,32 +20,39 @@ const AddReview = (props) => {
   };
 
   const ratingChanged = (newRating) => {
-    setReview(Object.assign({}, review, { "score": newRating }));
+    setReview(Object.assign(initalReview, review, { "score": newRating }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const csrfToken = document.querySelector("[name=csrf-token]").content;
-    const { id: hospital_id } = hospital;
+    
+    if(status === 'Add'){
+      const { id: hospital_id } = hospital;
 
-    Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
-    Axios.post("/api/v1/reviews.json", { review, hospital_id })
-      .then((res) => {
-        console.log("got here");
-
-        if(res.statusText === "Created"){
-          console.log("got here")
-          const toastInfo = {icon: "tick-mark", 
-                      title:"Create Review", 
-                      status: "Success", 
-                      message: "Your Review was successfully created!"};
-          <ReviewToast toastInfo ={toastInfo} />
-        }
-      })
-      .catch((err) => {
-        debugger;
-      });
-    close();
+      Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+      Axios.post("/api/v1/reviews.json", { review, hospital_id })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          debugger;
+        });
+      close();
+    }else if(status === "Update"){
+      console.log(review)
+      Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+      Axios.patch(`/api/v1/reviews/${review.id}.json`, { review })
+        .then((res) => {
+          debugger
+        })
+        .catch((err) => {
+          debugger;
+        });
+      close();
+    }
+    
+    
   };
 
   return (
@@ -57,6 +65,7 @@ const AddReview = (props) => {
               required
               type="text"
               placeholder="Keli Booster"
+              value={review.reviewer_name}
               onChange={handleChange}
             />
           </Form.Group>
@@ -66,6 +75,7 @@ const AddReview = (props) => {
             <Form.Control
               type="text"
               placeholder="Great hospital"
+              value={review.title}
               onChange={handleChange}
             />
           </Form.Group>
@@ -76,6 +86,7 @@ const AddReview = (props) => {
               placeholder="The nurses here were really great!"
               as="textarea"
               rows={3}
+              value={review.description}
               onChange={handleChange}
             />
           </Form.Group>
@@ -85,6 +96,7 @@ const AddReview = (props) => {
             count={5}
             onChange={ratingChanged}
             size={42}
+            value={initalReview.score}
             activeColor="#ffd700"
           />
           
@@ -93,7 +105,7 @@ const AddReview = (props) => {
 
       <Modal.Footer>
         <Button type="submit" variant="primary" onClick={handleSubmit}>
-          Save Changes
+          { `${status} Review`}
         </Button>
       </Modal.Footer>
     </div>
