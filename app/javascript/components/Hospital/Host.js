@@ -2,6 +2,8 @@ import React from 'react'
 import ReviewForm from './ReviewForm'
 import ReactStars from "react-rating-stars-component";
 import styled from 'styled-components';
+import Icofont from 'react-icofont';
+import AddHospital from '../Hospitals/AddHospital';
 
 const Rating =  styled.div`
     display: flex;
@@ -11,12 +13,21 @@ const Rating =  styled.div`
 
 const Host = (props) => {
     const { hospital } = props
+
+    const handleClick = (e) => {
+        console.log(e)
+    }
+   
     const { address, country, image, score} = hospital.body
     return (
         <div className="card shadow-lg border-0">
             <img src={image} className="card-img-top" alt="data.name"/>
 
             <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ hospital.name }</h1>
+            <div className="actions">
+                <button className="btn border-0 remove" onClick={handleClick}>{<Icofont icon="bin" className="text-danger remove"></Icofont>}</button>
+                <AddHospital status="Update" hospital={hospital}/>
+            </div>
             <Rating>
                 { <ReactStars
                     value={Number(score)}

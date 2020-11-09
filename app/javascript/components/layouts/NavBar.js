@@ -18,7 +18,7 @@ const NavBar = () => {
                 </li>
             </ul>
 
-           <AddHospital />
+           <AddHospital status="Add" hospital={{}} />
         </nav> 
     )
 }

@@ -12,15 +12,11 @@ const AddHospitalForm = (props) => {
   const {initalHospital, status, show, close } = props;  
   
   const [hospital, setHospital] = useState(initalHospital);
-
+  console.log((hospital))
   const handleChange = (e) => {
     const { id, value } = e.target;
     setHospital(Object.assign({}, hospital, { [id]: value }));
   };
-
-//   const ratingChanged = (newRating) => {
-//     setReview(Object.assign(initalReview, review, { "score": newRating }));
-//   };
 
 
   const handleSubmit = (e) => {
@@ -40,9 +36,10 @@ const AddHospitalForm = (props) => {
         });
       close();
     }else if(status === "Update"){
-      console.log(review)
+      const { slug } = hospital.body
+      console.log(slug)
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
-      Axios.patch(`/api/v1/reviews/${review.id}.json`, { review })
+      Axios.patch(`/api/v1/hospitals/${slug}.json`, { hospital })
         .then((res) => {
           debugger
         })
@@ -65,14 +62,14 @@ const AddHospitalForm = (props) => {
               required
               type="text"
               placeholder="Benedicta Hospital"
-              // value={review.reviewer_name}
+              value={hospital ? hospital.name : ""}
               onChange={handleChange}
             />
           </Form.Group>
 
           <Form.Group controlId="country">
           <Form.Label>Select a Country</Form.Label>
-          <Form.Control as="select" onChange={handleChange}>
+          <Form.Control as="select" value={hospital ? hospital.body.country : ""} onChange={handleChange}>
             { CountryList.map( country => (
               <option key={country}>{country}</option>
             ))}
@@ -82,17 +79,17 @@ const AddHospitalForm = (props) => {
 
         <Form.Group controlId="address">
           <Form.Label>Enter the address of the hospital</Form.Label>
-          <Form.Control type="text" onChange={handleChange}/>
+          <Form.Control value={hospital ? hospital.body.address : ""} type="text" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="city">
           <Form.Label>Enter your City Name</Form.Label>
-          <Form.Control type="text" placeholder="Accra" onChange={handleChange}/>
+          <Form.Control value={hospital ? hospital.city : ""} type="text" placeholder="Accra" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="image">
           <Form.Label>Enter the hospital image link</Form.Label>
-          <Form.Control type="text" onChange={handleChange}/>
+          <Form.Control value={ hospital ? hospital.body.image : ""} type="text" onChange={handleChange}/>
         </Form.Group>
       </Form> 
       </Modal.Body>

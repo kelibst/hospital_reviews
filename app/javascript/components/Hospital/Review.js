@@ -17,8 +17,6 @@ const Review = (props) => {
             }).catch(err => {
                 debugger
             })
-        }else if (e.target.classList.contains('update')){
-            
         }
     }
     return (

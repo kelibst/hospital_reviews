@@ -65,7 +65,7 @@ const AddReview = (props) => {
               required
               type="text"
               placeholder="Keli Booster"
-              value={review.reviewer_name}
+              value={review ? review.reviewer_name : ''}
               onChange={handleChange}
             />
           </Form.Group>
@@ -75,7 +75,7 @@ const AddReview = (props) => {
             <Form.Control
               type="text"
               placeholder="Great hospital"
-              value={review.title}
+              value={review ? review.title : ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -86,7 +86,7 @@ const AddReview = (props) => {
               placeholder="The nurses here were really great!"
               as="textarea"
               rows={3}
-              value={review.description}
+              value={review ? review.description : ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -96,7 +96,7 @@ const AddReview = (props) => {
             count={5}
             onChange={ratingChanged}
             size={42}
-            value={initalReview.score}
+            value={review ? initalReview.score : 0}
             activeColor="#ffd700"
           />
           
