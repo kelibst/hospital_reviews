@@ -1,6 +1,7 @@
 import React from 'react'
 import Icofont from 'react-icofont'
 import { Link, NavLink } from 'react-router-dom'
+import AddHospital from '../Hospitals/AddHospital'
 
 const NavBar = () => {
     return (
@@ -16,6 +17,8 @@ const NavBar = () => {
                     <NavLink className="nav-link text-light" to="/about"><Icofont icon="teacher" className="nav-icons"/> About</NavLink>
                 </li>
             </ul>
+
+           <AddHospital />
         </nav> 
     )
 }
