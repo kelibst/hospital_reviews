@@ -12,5 +12,4 @@ class Hospital < ApplicationRecord
   def avg_score
     reviews.average(:score)
   end
-  # .round(2).to_f
 end

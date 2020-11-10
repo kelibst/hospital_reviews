@@ -12,6 +12,7 @@ const AddHospitalForm = (props) => {
   const {initalHospital, status, show, close } = props;  
   
   const [hospital, setHospital] = useState(initalHospital);
+  // const { country, address, city, image} = hospital.body
   console.log((hospital))
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -62,14 +63,14 @@ const AddHospitalForm = (props) => {
               required
               type="text"
               placeholder="Benedicta Hospital"
-              value={hospital ? hospital.name : ""}
+              value={hospital.name ? hospital.name : ""}
               onChange={handleChange}
             />
           </Form.Group>
 
           <Form.Group controlId="country">
           <Form.Label>Select a Country</Form.Label>
-          <Form.Control as="select" value={hospital ? hospital.body.country : ""} onChange={handleChange}>
+          <Form.Control as="select" value={hospital.length? hospital.body.country : hospital.country} onChange={handleChange}>
             { CountryList.map( country => (
               <option key={country}>{country}</option>
             ))}
@@ -79,17 +80,17 @@ const AddHospitalForm = (props) => {
 
         <Form.Group controlId="address">
           <Form.Label>Enter the address of the hospital</Form.Label>
-          <Form.Control value={hospital ? hospital.body.address : ""} type="text" onChange={handleChange}/>
+          <Form.Control value={hospital.length ? hospital.body.address : hospital.address} type="text" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="city">
           <Form.Label>Enter your City Name</Form.Label>
-          <Form.Control value={hospital ? hospital.city : ""} type="text" placeholder="Accra" onChange={handleChange}/>
+          <Form.Control value={hospital.length  ? hospital.body.city : hospital.city} type="text" placeholder="Accra" onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group controlId="image">
           <Form.Label>Enter the hospital image link</Form.Label>
-          <Form.Control value={ hospital ? hospital.body.image : ""} type="text" onChange={handleChange}/>
+          <Form.Control value={ hospital.length ? hospital.body.image : hospital.image} type="text" onChange={handleChange}/>
         </Form.Group>
       </Form> 
       </Modal.Body>
