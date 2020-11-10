@@ -1,5 +1,7 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
+import notFound from '../containers/notFound'
 import Host from './Host'
 import Review from './Review'
 
@@ -13,7 +15,7 @@ const Hospital = (props) => {
          .then(res => {
              setHospital(res.data)
          }).catch(err => {
-             console.log(err)
+            err.response.status === 404 && props.history.push('/404')
          })
      }, [hospital.length])
 

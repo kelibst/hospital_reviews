@@ -3,6 +3,7 @@ import {
     Switch,
     Route
   } from "react-router-dom";
+import notFound from './containers/notFound';
 import Hospital from './Hospital/Hospital';
 import Hospitals from './Hospitals/Hospitals';
 import Sidebar from './layouts/Sidebar';
@@ -14,10 +15,13 @@ const App = () => {
             <Sidebar />
             <div className="content bg-light">
                 <UserInfo />
+
                 <Switch>
-                    <Route exact path="/" component={Hospitals} />            
+                    <Route exact path="/" component={Hospitals} />
+                    <Route exact path="/404" component={notFound} />     
                     <Route exact path="/hospitals/:slug" component={Hospital} />
                 </Switch> 
+
             </div>
         </div>
        

@@ -18,7 +18,7 @@ module Api
         if hospital.save
           render json: hospital, status: :created
         else
-          render json: { error: hospital.errors.messages }, status: 422
+          render json: { error: hospital.errors}, status: 422
         end
       end
 
@@ -34,14 +34,14 @@ module Api
         if @hospital.destroy
           head :no_content
         else
-          render json: { error: @hospital.errors.messages }, status: :unproccessable_entity
+          render json: { error: @hospital.errors.messages }, status: 422
         end
       end
 
       private
 
       def set_hospital
-        @hospital = Hospital.find_by(slug: params[:id])
+        @hospital = Hospital.find_by!(slug: params[:id])
       end
 
       def hospitals_params

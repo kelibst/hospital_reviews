@@ -23,6 +23,8 @@ const Host = (props) => {
             .then(res => {
                 debugger
             }).catch(err => {
+                err.response.status === 404 && console.log("Page not found")
+                console.log(err.message)
                 debugger
         })
     }

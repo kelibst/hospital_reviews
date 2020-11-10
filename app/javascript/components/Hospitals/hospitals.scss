@@ -19,3 +19,15 @@
         align-items: center;
     }
   }
+
+  .notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
