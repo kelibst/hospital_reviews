@@ -18,7 +18,15 @@ const NavBar = () => {
                 </li>
             </ul>
 
-           <AddHospital status="Add" hospital={{}} initialReview = {{}} />
+           <AddHospital status="Add" hospital = {
+               {
+                "name":"",
+                "country":"",
+                "address":"",
+                "city":"",
+                "image": ""
+                }
+        } />
         </nav> 
     )
 }
