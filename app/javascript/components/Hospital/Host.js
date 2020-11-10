@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import styled from 'styled-components';
 import Icofont from 'react-icofont';
 import AddHospital from '../Hospitals/AddHospital';
+import Axios from 'axios';
 
 const Rating =  styled.div`
     display: flex;
@@ -13,9 +14,17 @@ const Rating =  styled.div`
 
 const Host = (props) => {
     const { hospital } = props
+    const { slug } = hospital.body
 
     const handleClick = (e) => {
-        console.log(e)
+        const csrfToken = document.querySelector("[name=csrf-token]").content;
+            Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+            Axios.delete(`/api/v1/hospitals/${slug}.json`)
+            .then(res => {
+                debugger
+            }).catch(err => {
+                debugger
+        })
     }
    
     const { address, country, image, score} = hospital.body

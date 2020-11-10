@@ -1,6 +1,6 @@
 import React from 'react'
 import Icofont from 'react-icofont'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import AddHospital from '../Hospitals/AddHospital'
 
 const NavBar = () => {
@@ -18,7 +18,7 @@ const NavBar = () => {
                 </li>
             </ul>
 
-           <AddHospital status="Add" hospital={{}} />
+           <AddHospital status="Add" hospital={{}} initialReview = {{}} />
         </nav> 
     )
 }

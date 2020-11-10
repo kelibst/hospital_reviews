@@ -10,17 +10,17 @@ import ReviewToast from "./ReviewToast";
 const AddReview = (props) => {
 
   const [validated, setValidated] = useState(false);
-  const { hospital, initalReview, status, show, close } = props;  
+  const { hospital, initialReview, status, show, close } = props;  
   review
-  const [review, setReview] = useState(initalReview);
-
+  const [review, setReview] = useState(initialReview);
+console.log(review)
   const handleChange = (e) => {
     const { id, value } = e.target;
     setReview(Object.assign({}, review, { [id]: value }));
   };
 
   const ratingChanged = (newRating) => {
-    setReview(Object.assign(initalReview, review, { "score": newRating }));
+    setReview(Object.assign(initialReview, review, { "score": newRating }));
   };
 
   const handleSubmit = (e) => {
@@ -65,7 +65,7 @@ const AddReview = (props) => {
               required
               type="text"
               placeholder="Keli Booster"
-              value={review ? review.reviewer_name : ''}
+              value={review.reviewer_name ? review.reviewer_name : ''}
               onChange={handleChange}
             />
           </Form.Group>
@@ -75,7 +75,7 @@ const AddReview = (props) => {
             <Form.Control
               type="text"
               placeholder="Great hospital"
-              value={review ? review.title : ""}
+              value={review.title ? review.title : ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -86,7 +86,7 @@ const AddReview = (props) => {
               placeholder="The nurses here were really great!"
               as="textarea"
               rows={3}
-              value={review ? review.description : ""}
+              value={review.description ? review.description : ""}
               onChange={handleChange}
             />
           </Form.Group>
@@ -96,7 +96,7 @@ const AddReview = (props) => {
             count={5}
             onChange={ratingChanged}
             size={42}
-            value={review ? initalReview.score : 0}
+            value={review.score ? review.score : 0}
             activeColor="#ffd700"
           />
           
