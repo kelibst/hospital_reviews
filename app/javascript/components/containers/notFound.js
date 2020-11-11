@@ -14,7 +14,7 @@ const notFound = () => {
                 <div className="notfound-header">
                 <h1 className="text-center font-weight-bolder my-5">Page Not Found!</h1> 
                 <div className="bounce-bottom">
-                    <Icofont icon="nerd-smile" style={errorIcon} className="error-icon text-danger" />
+                    <Icofont icon="nerd-smile" style={errorIcon} className="error-icon text-default" />
                 </div>
                 </div>
                 <div className="notfound-content">

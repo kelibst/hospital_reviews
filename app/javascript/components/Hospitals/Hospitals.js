@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import React, {useState, useEffect } from 'react'
+import Loading from '../containers/Loading'
 import HospitalList from './HospitalList'
 import './hospitals.scss'
 const Hospitals = () => {
@@ -21,7 +22,7 @@ const Hospitals = () => {
     const hospitalList = hospitals.length ? (
         hospitals && hospitals.map (hospital => <HospitalList key={hospital.name} data = { hospital } /> )
     ) : (
-        (<div className="loading"> Loading</div> )
+        <Loading />
     )
    
     return (

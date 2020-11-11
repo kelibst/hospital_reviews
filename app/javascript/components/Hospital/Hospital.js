@@ -1,18 +1,21 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
+import Loading from '../containers/Loading'
 import notFound from '../containers/notFound'
 import Host from './Host'
 import Review from './Review'
 
 const Hospital = (props) => {
      const [hospital, setHospital] = useState([])
+     const [loading, setLoading] = useState(true)
     const { slug } = props.match.params
     
      useEffect(() => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
          .then(res => {
+             setLoading(false)
              setHospital(res.data)
          }).catch(err => {
             err.response.status === 404 && props.history.push('/404')
@@ -23,8 +26,6 @@ const Hospital = (props) => {
      console.log(reviews_all)
     const displayHospital = hospital.id ? (
         <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
-        
-        
         <Host hospital={hospital}/>
         
             <div className="card shadow-lg border-0 reviews my-3">
@@ -36,14 +37,14 @@ const Hospital = (props) => {
                         ))
                         
                     ) : (
-                        <h6 className="error">There was an error!</h6>
+                        <Loading />
                     )}
                     </div>
             </div>
         </div>
     ) : (
         <div className="error">
-            Sorry an error occured
+            {loading ?  <Loading /> : "Error" }
         </div>
     )
 

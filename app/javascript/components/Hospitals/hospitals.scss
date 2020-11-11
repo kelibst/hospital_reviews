@@ -3,6 +3,12 @@
     padding-top: 4rem;
 }
 
+.text{
+    &-default{
+        color:  #e42dfd;
+    }
+}
+
 .card{
     &-sc-btn {
     margin: 1rem 0.5rem;

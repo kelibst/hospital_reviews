@@ -16,6 +16,14 @@
   display: flex;
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
 .bounce-bottom {
   position: absolute;
   left: 40%;
@@ -23,8 +31,8 @@
 }
 
 .rotate-center {
-  -webkit-animation: rotate-center 1s ease-in-out 2s infinite both;
-  animation: rotate-center 1s ease-in-out 2s infinite both;
+  -webkit-animation: rotate-center 1s ease-in-out .5s infinite both;
+  animation: rotate-center 1s ease-in-out .5s infinite both;
 }
 
 .bounce-bottom {
