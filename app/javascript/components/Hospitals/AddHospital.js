@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import AddHospitalForm from './AddHospitalForm'
 import Icofont from 'react-icofont'
+import { useContext } from 'react'
+import HospitalsContextProvider, { HospitalsContext } from '../../contexts/HospitalsContext'
 
 
 const AddHospital = (props) => {
@@ -11,7 +13,6 @@ const AddHospital = (props) => {
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
-
     return (
         <div >
             <Button className="btn btn-success" onClick={handleShow}><Icofont icon="ui-add"></Icofont> 
@@ -22,7 +23,9 @@ const AddHospital = (props) => {
                 <Modal.Header closeButton>
                 <Modal.Title><span className="font-weight-bolder"> { status} a  Hospital </span> </Modal.Title>
                 </Modal.Header>
-                <AddHospitalForm initalHospital={hospital} status={status} close={handleClose} show={handleShow}/>
+                <HospitalsContextProvider>
+                    <AddHospitalForm initalHospital={hospital} status={status} close={handleClose} show={handleShow}/>
+                </HospitalsContextProvider>
             </Modal>
         </div>
     )

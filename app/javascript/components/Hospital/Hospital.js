@@ -26,7 +26,8 @@ const Hospital = (props) => {
      console.log(reviews_all)
     const displayHospital = hospital.id ? (
         <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
-        <Host hospital={hospital}/>
+       
+            <Host hospital={hospital}/>
         
             <div className="card shadow-lg border-0 reviews my-3">
                     <h4 className="card-title my-3 text-center font-weight-bolder my-3 text-uppercase"> Reviews</h4>

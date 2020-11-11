@@ -1,40 +1,41 @@
 import Axios from "axios";
 import React, { useState } from "react";
+import { useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { Redirect } from "react-router-dom";
 import CountryList from "../../../assets/CountryList";
+import { HospitalsContext } from "../../contexts/HospitalsContext";
 
 
 
 const AddHospitalForm = (props) => {
-
+  const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
   const [validated, setValidated] = useState(false);
   const {initalHospital, status, show, close } = props;  
   const [hospital, setHospital] = useState(initalHospital);
   // const { country, address, city, image} = hospital.body
-  console.log(hospital)
   const handleChange = (e) => {
     const { id, value } = e.target;
     setHospital(Object.assign({}, hospital, { [id]: value }));
   };
-
+console.log(hospitals)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const csrfToken = document.querySelector("[name=csrf-token]").content;
     
     if(status === 'Add'){
-      // const { id: hospital_id } = hospital;
       hospital.name = hospital.name.trim();
-      console.log(hospital)
       
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.post("/api/v1/hospitals.json", { hospital })
         .then((res) => {
-          console.log(res.data);
+          console.log(hospitals)
+          return <Redirect to={`/hospital/${res.data.slug}`} />
         })
         .catch((err) => {
-          console.log(err.response.data.error)
+          console.log(err)
         });
       close();
     }else if(status === "Update"){
@@ -45,12 +46,13 @@ const AddHospitalForm = (props) => {
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.patch(`/api/v1/hospitals/${slug}.json`, { hospital })
         .then((res) => {
-          debugger
+          const resp = res.data
+          addNewHospital({...hospitals, resp})
         })
         .catch((err) => {
           debugger;
         });
-      close();
+     
     }
     
     

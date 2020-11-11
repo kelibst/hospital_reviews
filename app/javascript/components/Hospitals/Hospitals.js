@@ -1,19 +1,17 @@
 import Axios from 'axios'
-import React, {useState, useEffect } from 'react'
+import React, {useContext, useEffect } from 'react'
+import { HospitalsContext } from '../../contexts/HospitalsContext'
 import Loading from '../containers/Loading'
 import HospitalList from './HospitalList'
 import './hospitals.scss'
 const Hospitals = () => {
-    const [ hospitals, setHospitals ] = useState([])
-
-    
+    const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
+    console.log(hospitals)
     useEffect(() => {
         // get all the hospitals
-
         Axios.get('api/v1/hospitals.json')
         .then(res => {
-            setHospitals(res.data)
-            
+            addNewHospital(res.data)
         }).catch(err => {
             console.log(err)
         })
