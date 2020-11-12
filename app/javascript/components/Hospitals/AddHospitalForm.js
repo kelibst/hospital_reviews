@@ -5,12 +5,16 @@ import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Redirect, useHistory } from "react-router-dom";
 import CountryList from "../../../assets/CountryList";
+import { ErrorContext } from "../../contexts/ErrorContext";
 import { HospitalsContext } from "../../contexts/HospitalsContext";
+import AlertContainer from "../containers/AlertContainer";
 
 
 
 const AddHospitalForm = (props) => {
   const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
+  const {error, addError} = useContext(ErrorContext)
+  console.log(error)
   let history = useHistory()
   const [validated, setValidated] = useState(false);
   const {initalHospital, status, show, close } = props;  
@@ -20,7 +24,6 @@ const AddHospitalForm = (props) => {
     const { id, value } = e.target;
     setHospital(Object.assign({}, hospital, { [id]: value }));
   };
-console.log(hospitals)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,13 +35,21 @@ console.log(hospitals)
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.post("/api/v1/hospitals.json", { hospital })
         .then((res) => {
-          console.log(hospitals)
           const newHost = [...hospitals, res.data]
           addNewHospital(newHost)
           history.push(`/hospitals/${res.data.body.slug}`)
         })
         .catch((err) => {
-          console.log(err)
+          if (err.response) {
+            addError(err.response)
+          } else if (err.request) {
+            addError(err.request)
+          } else {
+            message = {error: {
+              name: "something went wrong"
+            }}
+            addError(message)
+          }
         });
       close();
     }else if(status === "Update"){
@@ -49,8 +60,9 @@ console.log(hospitals)
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.patch(`/api/v1/hospitals/${slug}.json`, { hospital })
         .then((res) => {
-          const resp = res.data
-          addNewHospital({...hospitals, resp})
+          const newHost = [...hospitals, res.data]
+          addNewHospital(newHost)
+          console.log(res.data, hospitals)
         })
         .catch((err) => {
           debugger;

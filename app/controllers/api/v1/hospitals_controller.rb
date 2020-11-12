@@ -18,13 +18,13 @@ module Api
         if @hospital.save
           @hospital
         else
-          render json: { error: @hospital.errors}, status: 422
+          render json: { error: @hospital.errors.messages}, status: 422
         end
       end
 
       def update
         if @hospital.update(hospitals_params)
-          render json: @hospital, status: :created
+          @hospital
         else
           render json: { error: @hospital.errors.messages }, status: 422
         end

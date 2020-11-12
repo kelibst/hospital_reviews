@@ -10,7 +10,7 @@ import HospitalsContextProvider, { HospitalsContext } from '../../contexts/Hospi
 const AddHospital = (props) => {
     const [show, setShow] = useState(false);
     const { status, hospital } = props
-
+    
     
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)

@@ -3,6 +3,7 @@ import {
     Switch,
     Route
   } from "react-router-dom";
+import ErrorContextProvider from '../contexts/ErrorContext';
 import HospitalsContextProvider, { HospitalsContext } from '../contexts/HospitalsContext';
 import notFound from './containers/notFound';
 import Hospital from './Hospital/Hospital';
@@ -14,6 +15,7 @@ const App = () => {
     return (
         <div className="wrapper d-sm-flex">
         <HospitalsContextProvider>
+        <ErrorContextProvider>
             <Sidebar />
       
             <div className="content bg-light">
@@ -23,12 +25,12 @@ const App = () => {
                     <Route exact path="/" component={Hospitals} />   
                     <Route exact path="/hospitals/:slug" component={Hospital} />
                     <Route exact path="/404" component={notFound} /> 
-                
-                     
                 </Switch> 
 
             </div>
+            </ErrorContextProvider>
             </HospitalsContextProvider>
+            
         </div>
        
     )
