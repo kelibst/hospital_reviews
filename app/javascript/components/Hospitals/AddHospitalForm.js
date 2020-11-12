@@ -7,7 +7,6 @@ import { Redirect, useHistory } from "react-router-dom";
 import CountryList from "../../../assets/CountryList";
 import { ErrorContext } from "../../contexts/ErrorContext";
 import { HospitalsContext } from "../../contexts/HospitalsContext";
-import AlertContainer from "../containers/AlertContainer";
 
 
 
@@ -62,7 +61,7 @@ const AddHospitalForm = (props) => {
         .then((res) => {
           const newHost = [...hospitals, res.data]
           addNewHospital(newHost)
-          console.log(res.data, hospitals)
+          setHospital(res.data)
         })
         .catch((err) => {
           debugger;

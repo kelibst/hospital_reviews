@@ -19,7 +19,7 @@ const AlertContainer = () => {
                 </div>
                 <hr />
                 <div className="d-flex justify-content-end">
-                <Button onClick={() => setShow(false)} variant="outline-success">
+                <Button onClick={() => setShow(false)} variant="outline-danger">
                     close
                 </Button>
                 </div>

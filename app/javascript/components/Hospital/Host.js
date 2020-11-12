@@ -47,7 +47,7 @@ const Host = (props) => {
                     size={24}
                     activeColor="#ffd700"
                 />}
-                <h6 className="font-weight-bolder display-6">Rated {parseFloat(score).toFixed(2) } out of 5</h6>
+                <h6 className="font-weight-bolder display-6">Rated {Number(score) ? parseFloat(score).toFixed(2) : 0 } out of 5</h6>
             </Rating>
             
 
