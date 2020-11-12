@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import CountryList from "../../../assets/CountryList";
 import { HospitalsContext } from "../../contexts/HospitalsContext";
 
@@ -11,6 +11,7 @@ import { HospitalsContext } from "../../contexts/HospitalsContext";
 
 const AddHospitalForm = (props) => {
   const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
+  let history = useHistory()
   const [validated, setValidated] = useState(false);
   const {initalHospital, status, show, close } = props;  
   const [hospital, setHospital] = useState(initalHospital);
@@ -32,7 +33,9 @@ console.log(hospitals)
       Axios.post("/api/v1/hospitals.json", { hospital })
         .then((res) => {
           console.log(hospitals)
-          return <Redirect to={`/hospital/${res.data.slug}`} />
+          const newHost = [...hospitals, res.data]
+          addNewHospital(newHost)
+          history.push(`/hospitals/${res.data.body.slug}`)
         })
         .catch((err) => {
           console.log(err)
@@ -52,7 +55,7 @@ console.log(hospitals)
         .catch((err) => {
           debugger;
         });
-     
+     close()
     }
     
     

@@ -14,11 +14,11 @@ module Api
       def edit; end
 
       def create
-        hospital = Hospital.new(hospitals_params)
-        if hospital.save
-          render json: hospital, status: :created
+        @hospital = Hospital.new(hospitals_params)
+        if @hospital.save
+          @hospital
         else
-          render json: { error: hospital.errors}, status: 422
+          render json: { error: @hospital.errors}, status: 422
         end
       end
 

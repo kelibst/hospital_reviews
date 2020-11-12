@@ -13,21 +13,22 @@ import UserInfo from './layouts/UserInfo';
 const App = () => {
     return (
         <div className="wrapper d-sm-flex">
+        <HospitalsContextProvider>
             <Sidebar />
       
             <div className="content bg-light">
                 <UserInfo />
 
                 <Switch>
-                <HospitalsContextProvider>
                     <Route exact path="/" component={Hospitals} />   
                     <Route exact path="/hospitals/:slug" component={Hospital} />
                     <Route exact path="/404" component={notFound} /> 
-                </HospitalsContextProvider>
+                
                      
                 </Switch> 
 
             </div>
+            </HospitalsContextProvider>
         </div>
        
     )

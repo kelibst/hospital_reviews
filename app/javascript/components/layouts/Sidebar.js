@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Icofont from 'react-icofont'
+import { HospitalsContext } from '../../contexts/HospitalsContext'
 import Footer from './Footer'
 import NavBar from './NavBar'
 import './sidebar.scss'
 
 const Sidebar = () => {
+    const {hospitals, addNewHospital } = useContext(HospitalsContext)
+    console.log(hospitals)
     return (
         <aside className="sidebar bg-default-blue col-sm-4 col-md-3 col-xl-2">
             <header className="mt-5">

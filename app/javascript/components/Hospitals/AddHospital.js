@@ -11,6 +11,7 @@ const AddHospital = (props) => {
     const [show, setShow] = useState(false);
     const { status, hospital } = props
 
+    
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
     return (
@@ -23,9 +24,7 @@ const AddHospital = (props) => {
                 <Modal.Header closeButton>
                 <Modal.Title><span className="font-weight-bolder"> { status} a  Hospital </span> </Modal.Title>
                 </Modal.Header>
-                <HospitalsContextProvider>
                     <AddHospitalForm initalHospital={hospital} status={status} close={handleClose} show={handleShow}/>
-                </HospitalsContextProvider>
             </Modal>
         </div>
     )
