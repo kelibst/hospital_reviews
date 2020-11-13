@@ -16,7 +16,7 @@ const ConfirmDelete = (props) => {
     const { currentHospital, hospitals, addNewHospital } = useContext(HospitalsContext)
     const { reviews, updateReviews, currentReview, updateCurrentReview } = useContext(ReviewsContext)
        const history = useHistory()
-    console.log(currentReview, "state", show)
+
     
     const handleDelete = (e) => {
         const csrfToken = document.querySelector("[name=csrf-token]").content;

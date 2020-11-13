@@ -13,10 +13,9 @@ import Review from './Review'
 const Hospital = (props) => {
      const {currentHospital, setCurrentHospital} = useContext(HospitalsContext)
      const {reviews, updateReviews } = useContext(ReviewsContext)
-    console.log(reviews)
      const [loading, setLoading] = useState(true)
-    const { slug } = props.match.params
-    const {error, addError } = useContext(ErrorContext)
+     const { slug } = props.match.params
+     const {error, addError } = useContext(ErrorContext)
      useEffect(() => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)

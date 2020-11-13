@@ -16,7 +16,6 @@ const Review = (props) => {
 
     const handleClick = (e) =>{
         if(e.target.classList.contains('remove')){
-            console.log(review)
             // updateCurrentReview(review)
             setShow(true)
         }

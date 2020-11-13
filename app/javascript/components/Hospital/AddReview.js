@@ -1,8 +1,9 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import ReactStars from "react-rating-stars-component";
+import { ReviewsContext } from "../../contexts/ReviewsContext";
 import ReviewToast from "./ReviewToast";
 
 
@@ -10,17 +11,19 @@ import ReviewToast from "./ReviewToast";
 const AddReview = (props) => {
 
   const [validated, setValidated] = useState(false);
-  const { hospital, initialReview, status, show, close } = props;  
+  const { hospital, initalReview, status, show, close } = props;  
   
-  const [review, setReview] = useState(initialReview);
-
+  const {reviews, updateReviews, currentReview, updateCurrentReview  } = useContext(ReviewsContext)
+  
+  const [review, setReview] = useState(initalReview);
+  
   const handleChange = (e) => {
     const { id, value } = e.target;
     setReview(Object.assign({}, review, { [id]: value }));
   };
 
   const ratingChanged = (newRating) => {
-    setReview(Object.assign(initialReview, review, { "score": newRating }));
+    setReview(Object.assign(initalReview, review, { "score": newRating }));
   };
 
   const handleSubmit = (e) => {
@@ -33,18 +36,20 @@ const AddReview = (props) => {
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.post("/api/v1/reviews.json", { review, hospital_id })
         .then((res) => {
-          debugger
+          let allRev = [...reviews, res.data]
+          updateReviews(allRev)
         })
         .catch((err) => {
           debugger;
         });
       close();
     }else if(status === "Update"){
-      console.log(review)
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.patch(`/api/v1/reviews/${review.id}.json`, { review })
         .then((res) => {
-          debugger
+          let curRev = reviews.filter(rev => rev.id !== res.data.id)
+          let allRev = [...curRev, res.data]
+          updateReviews(allRev)
         })
         .catch((err) => {
           debugger;

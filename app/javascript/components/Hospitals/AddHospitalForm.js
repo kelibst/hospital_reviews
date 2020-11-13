@@ -33,7 +33,7 @@ const AddHospitalForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const csrfToken = document.querySelector("[name=csrf-token]").content;
-    console.log(hospital, "hospital")
+    
     if(status === 'Add'){
       hospital.name = hospital.name.trim();
       
@@ -61,12 +61,11 @@ const AddHospitalForm = (props) => {
     }else if(status === "Update"){
       const { slug } = currentHospital.body
       hospital.name = currentHospital.name.trim();
-      console.log(hospital)
+     
       
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.patch(`/api/v1/hospitals/${slug}.json`, { hospital })
         .then((res) => {
-          console.log(res)
           currentHospital.body.slug = string_parameterize(currentHospital.name)
           setCurrentHospital(Object.assign({}, currentHospital, hospital ))
           history.push(`/hospitals/${currentHospital.body.slug}`)
