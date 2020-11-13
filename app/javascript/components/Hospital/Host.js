@@ -6,6 +6,7 @@ import Icofont from 'react-icofont';
 import AddHospital from '../Hospitals/AddHospital';
 import Axios from 'axios';
 import { HospitalsContext } from '../../contexts/HospitalsContext';
+import { useHistory } from 'react-router-dom';
 
 const Rating =  styled.div`
     display: flex;
@@ -15,20 +16,22 @@ const Rating =  styled.div`
 
 const Host = (props) => {
     const { hospital } = props
-    const {currentHospital, setCurrentHospital } = useContext(HospitalsContext)
-    
+    const {currentHospital, hospitals, addNewHospital, setCurrentHospital } = useContext(HospitalsContext)
+    console.log("delete", hospitals)
     const { slug } = currentHospital.body
+    const history = useHistory()
 
     const handleClick = (e) => {
         const csrfToken = document.querySelector("[name=csrf-token]").content;
             Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
             Axios.delete(`/api/v1/hospitals/${slug}.json`)
             .then(res => {
-                debugger
+                console.log(res)
+                let newHospitalsList = hospitals.filter(host => host.id !== currentHospital.id)
+                addNewHospital(newHospitalsList)
+                history.push('/')
             }).catch(err => {
-                debugger
-                err.response.status === 404 && console.log("Page not found")
-                
+                err.response.status === 404 && console.log("Page not found")  
         })
     }
    

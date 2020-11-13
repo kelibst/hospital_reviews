@@ -65,21 +65,26 @@ const AddHospitalForm = (props) => {
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.patch(`/api/v1/hospitals/${slug}.json`, { hospital })
         .then((res) => {
-          res.status === 204 ? (
-           ()=> {
-            currentHospital.body.slug = string_parameterize(currentHospital.name)
-            setCurrentHospital(Object.assign({}, currentHospital, hospital ))
-            history.push(`/hospitals/${currentHospital.body.slug}`)
-           }
-          ) :
-          ("Error")
-          
+          console.log(res)
+          currentHospital.body.slug = string_parameterize(currentHospital.name)
+          setCurrentHospital(Object.assign({}, currentHospital, hospital ))
+          history.push(`/hospitals/${currentHospital.body.slug}`)
         })
         .catch((err) => {
-          debugger;
-        });
+          if (err.response) {
+            addError(err.response)
+          } else if (err.request) {
+            addError(err.request)
+          } else {
+            message = {error: {
+              name: "something went wrong"
+            }}
+            addError(message)
+          }
+        }); 
+        close()
     }
-    close()
+   
     
   };
   const greVal = status === "Add" ? hospital : currentHospital
