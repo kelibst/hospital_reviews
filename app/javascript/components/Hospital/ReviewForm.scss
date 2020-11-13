@@ -25,3 +25,13 @@ input{
     display: flex;
     justify-content: center;
 }
+
+.card-foot {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    & button{
+        font-size: 2rem;
+    }
+}

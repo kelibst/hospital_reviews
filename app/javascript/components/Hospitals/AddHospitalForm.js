@@ -13,7 +13,7 @@ import { HospitalsContext } from "../../contexts/HospitalsContext";
 const AddHospitalForm = (props) => {
   const  { hospitals, addNewHospital, currentHospital, setCurrentHospital }  =  useContext(HospitalsContext)
   const {error, addError} = useContext(ErrorContext)
-  console.log(currentHospital)
+ 
   let history = useHistory()
   
   const [validated, setValidated] = useState(false);

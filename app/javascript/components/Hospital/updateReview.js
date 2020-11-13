@@ -11,7 +11,7 @@ const UpdateReview = (props) => {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
     return (
-        <div >
+        <div>
             <Button variant="btn border-0 remove" className="btn-rev mt-4" onClick={handleShow}>
               {<Icofont icon="quill-pen" className="text-primary update"></Icofont>}
             </Button>

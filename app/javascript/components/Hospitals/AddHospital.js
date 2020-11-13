@@ -16,7 +16,7 @@ const AddHospital = (props) => {
     const handleShow = () => setShow(true)
     return (
         <div >
-            <Button className="btn btn-success" onClick={handleShow}><Icofont icon="ui-add"></Icofont> 
+            <Button className="btn btn-success" onClick={handleShow}><Icofont icon={status === "Update" ? "quill-pen" : "ui-add"}></Icofont> 
                 { status } a Hosptal
             </Button>
 

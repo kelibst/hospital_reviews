@@ -41,8 +41,8 @@ $default-blue: rgb(79, 76, 233);
         background: white;
         border-radius: 1rem 0 0 1rem;
         color: black !important;
-        width: 110%;
-        scale: 1.2;
+        width: 130%;
+        transform: scale(1.2);
     }
 
     &-icons{

@@ -1,12 +1,10 @@
 import Axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import { ErrorContext } from '../../contexts/ErrorContext'
-import HospitalsContextProvider, { HospitalsContext } from '../../contexts/HospitalsContext'
+import { HospitalsContext } from '../../contexts/HospitalsContext'
 import { ReviewsContext } from '../../contexts/ReviewsContext'
 import AlertContainer from '../containers/AlertContainer'
 import Loading from '../containers/Loading'
-import notFound from '../containers/notFound'
 import Host from './Host'
 import Review from './Review'
 
@@ -45,7 +43,7 @@ const Hospital = (props) => {
                         ))
                         
                     ) : (
-                        <Loading />
+                        <h6 className="text-center font-weight-bolder">No Reviews Yet</h6>
                     )}
                     </div>
             </div>
