@@ -15,6 +15,7 @@ const AddHospitalForm = (props) => {
   const {error, addError} = useContext(ErrorContext)
   console.log(currentHospital)
   let history = useHistory()
+  
   const [validated, setValidated] = useState(false);
   const [hospital, setHospital] = useState({});
   const {status, show, close } = props;  

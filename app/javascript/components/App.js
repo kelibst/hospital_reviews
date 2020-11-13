@@ -5,6 +5,7 @@ import {
   } from "react-router-dom";
 import ErrorContextProvider from '../contexts/ErrorContext';
 import HospitalsContextProvider, { HospitalsContext } from '../contexts/HospitalsContext';
+import ReviewsContextProvider from '../contexts/ReviewsContext';
 import notFound from './containers/notFound';
 import Hospital from './Hospital/Hospital';
 import Hospitals from './Hospitals/Hospitals';
@@ -15,6 +16,7 @@ const App = () => {
     return (
         <div className="wrapper d-sm-flex">
         <HospitalsContextProvider>
+        <ReviewsContextProvider>
         <ErrorContextProvider>
             <Sidebar />
       
@@ -29,6 +31,7 @@ const App = () => {
 
             </div>
             </ErrorContextProvider>
+            </ReviewsContextProvider>
             </HospitalsContextProvider>
             
         </div>

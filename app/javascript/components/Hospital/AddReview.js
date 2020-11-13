@@ -11,9 +11,9 @@ const AddReview = (props) => {
 
   const [validated, setValidated] = useState(false);
   const { hospital, initialReview, status, show, close } = props;  
-  review
+  
   const [review, setReview] = useState(initialReview);
-console.log(review)
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setReview(Object.assign({}, review, { [id]: value }));
@@ -33,7 +33,7 @@ console.log(review)
       Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
       Axios.post("/api/v1/reviews.json", { review, hospital_id })
         .then((res) => {
-          console.log(res.data);
+          debugger
         })
         .catch((err) => {
           debugger;

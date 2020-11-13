@@ -1,19 +1,24 @@
 import Axios from 'axios';
-import React from 'react'
+import React, { useContext } from 'react'
 import Icofont from 'react-icofont';
 import ReactStars from "react-rating-stars-component";
+import { ReviewsContext } from '../../contexts/ReviewsContext';
 import UpdateReview from './updateReview';
 
 const Review = (props) => {
+    const {reviews, updateReviews, currentReview, updateCurrentReview  } = useContext(ReviewsContext)
     const {review} = props
+   
     
+
     const handleClick = (e) =>{
         const csrfToken = document.querySelector("[name=csrf-token]").content;
         if(e.target.classList.contains('remove')){
             Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
             Axios.delete(`/api/v1/reviews/${review.id}.json`)
             .then(res => {
-                debugger
+                let newReviews = reviews.filter(rev => rev.id !== review.id)
+               updateReviews(newReviews)
             }).catch(err => {
                 debugger
             })

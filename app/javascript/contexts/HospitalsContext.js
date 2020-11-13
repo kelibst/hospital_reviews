@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { createContext } from 'react';
 import { useState } from 'react';
-import { createContext } from 'react';
 
 export const HospitalsContext = createContext();
 

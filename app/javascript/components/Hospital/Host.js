@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ReviewForm from './ReviewForm'
 import ReactStars from "react-rating-stars-component";
 import styled from 'styled-components';
@@ -7,6 +7,7 @@ import AddHospital from '../Hospitals/AddHospital';
 import Axios from 'axios';
 import { HospitalsContext } from '../../contexts/HospitalsContext';
 import { useHistory } from 'react-router-dom';
+import ConfirmDelete from '../containers/ConfirmDelete';
 
 const Rating =  styled.div`
     display: flex;
@@ -15,29 +16,23 @@ const Rating =  styled.div`
 `;
 
 const Host = (props) => {
+    const [show, setShow] = useState(false);
+
+    const history = useHistory()
     const { hospital } = props
     const {currentHospital, hospitals, addNewHospital, setCurrentHospital } = useContext(HospitalsContext)
-    console.log("delete", hospitals)
-    const { slug } = currentHospital.body
-    const history = useHistory()
+    
 
     const handleClick = (e) => {
-        const csrfToken = document.querySelector("[name=csrf-token]").content;
-            Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
-            Axios.delete(`/api/v1/hospitals/${slug}.json`)
-            .then(res => {
-                console.log(res)
-                let newHospitalsList = hospitals.filter(host => host.id !== currentHospital.id)
-                addNewHospital(newHospitalsList)
-                history.push('/')
-            }).catch(err => {
-                err.response.status === 404 && console.log("Page not found")  
-        })
+         setShow(true)
     }
    
     const { address, country, image, score} = currentHospital.body
     return (
         <div className="card shadow-lg border-0">
+
+           
+
             <img src={image} className="card-img-top" alt="data.name"/>
 
             <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ currentHospital.name }</h1>
@@ -45,6 +40,7 @@ const Host = (props) => {
                 <button className="btn border-0 remove" onClick={handleClick}>{<Icofont icon="bin" className="text-danger remove"></Icofont>}</button>
                 <AddHospital status="Update" hospital={currentHospital}/>
             </div>
+            { <ConfirmDelete  status = "Hospital" show={show} setShow ={setShow}/> }
             <Rating>
                 { <ReactStars
                     value={Number(score)}
