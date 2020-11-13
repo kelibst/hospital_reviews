@@ -1,27 +1,24 @@
 import Axios from 'axios';
 import React, { useContext } from 'react'
+import { useState } from 'react';
 import Icofont from 'react-icofont';
 import ReactStars from "react-rating-stars-component";
 import { ReviewsContext } from '../../contexts/ReviewsContext';
+import ConfirmDelete from '../containers/ConfirmDelete';
 import UpdateReview from './updateReview';
 
 const Review = (props) => {
     const {reviews, updateReviews, currentReview, updateCurrentReview  } = useContext(ReviewsContext)
     const {review} = props
+    const [show, setShow] = useState(false);
    
     
 
     const handleClick = (e) =>{
-        const csrfToken = document.querySelector("[name=csrf-token]").content;
         if(e.target.classList.contains('remove')){
-            Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
-            Axios.delete(`/api/v1/reviews/${review.id}.json`)
-            .then(res => {
-                let newReviews = reviews.filter(rev => rev.id !== review.id)
-               updateReviews(newReviews)
-            }).catch(err => {
-                debugger
-            })
+            console.log(review)
+            // updateCurrentReview(review)
+            setShow(true)
         }
     }
     return (
@@ -46,6 +43,7 @@ const Review = (props) => {
                 <button className="btn border-0 remove" onClick={handleClick}>{<Icofont icon="bin" className="text-danger remove"></Icofont>}</button>
                 <UpdateReview  review = { review } status="Update" />
             </div>
+            <ConfirmDelete status="Review" sRev = {review} show={show} setShow={setShow} />
         </div>
     )
 }

@@ -12,20 +12,20 @@ import { ReviewsContext } from '../../contexts/ReviewsContext';
 
 const ConfirmDelete = (props) => {
 
-    const { status, show, setShow } = props
+    const { status, show, setShow, sRev } = props
     const { currentHospital, hospitals, addNewHospital } = useContext(HospitalsContext)
     const { reviews, updateReviews, currentReview, updateCurrentReview } = useContext(ReviewsContext)
        const history = useHistory()
-    console.log(currentHospital, currentReview, "state", show)
+    console.log(currentReview, "state", show)
     
     const handleDelete = (e) => {
-    
+        const csrfToken = document.querySelector("[name=csrf-token]").content;
        
         if(status === "Hospital"){
             const { slug } = currentHospital.body
          
 
-            const csrfToken = document.querySelector("[name=csrf-token]").content;
+            
                 Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
                 Axios.delete(`/api/v1/hospitals/${slug}.json`)
                 .then(res => {
@@ -36,7 +36,17 @@ const ConfirmDelete = (props) => {
                 }).catch(err => {
                     err.response.status === 404 && console.log("Page not found")  
             })
-        } 
+        } else if(status === "Review"){
+            const csrfToken = document.querySelector("[name=csrf-token]").content;
+            Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+            Axios.delete(`/api/v1/reviews/${sRev.id}.json`)
+            .then(res => {
+                let newReviews = reviews.filter(rev => rev.id !== sRev.id)
+               updateReviews(newReviews)
+            }).catch(err => {
+                debugger
+            })
+        }
 
     }
     return (

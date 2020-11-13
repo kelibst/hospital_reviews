@@ -13,7 +13,7 @@ import Review from './Review'
 const Hospital = (props) => {
      const {currentHospital, setCurrentHospital} = useContext(HospitalsContext)
      const {reviews, updateReviews } = useContext(ReviewsContext)
-    
+    console.log(reviews)
      const [loading, setLoading] = useState(true)
     const { slug } = props.match.params
     const {error, addError } = useContext(ErrorContext)
@@ -23,14 +23,16 @@ const Hospital = (props) => {
          .then(res => {
              setLoading(false)
              setCurrentHospital(res.data)
+             updateReviews(res.data.reviews.reviews_all)
          }).catch(err => {
              addError(err)
-            err.response.status === 404 && props.history.push('/404')
+             if(err.response){
+                err.response.status === 404 && props.history.push('/404')
+             }
          })
      }, [currentHospital.length])
 
-        const reviews_all = currentHospital.reviews ? currentHospital.reviews.reviews_all : null
-        updateReviews(reviews_all)
+        
     const displayHospital = currentHospital.id ? (
         <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
             {error.data && <AlertContainer />  }
@@ -38,7 +40,7 @@ const Hospital = (props) => {
             <div className="card shadow-lg border-0 reviews my-3">
                     <h4 className="card-title my-3 text-center font-weight-bolder my-3 text-uppercase"> Reviews</h4>
                     <div className="card-body">
-                    { reviews ? (
+                    { reviews.length ? (
                         reviews && reviews.map( review => (
                             <Review review = {review} key={review.updated_at} />
                         ))

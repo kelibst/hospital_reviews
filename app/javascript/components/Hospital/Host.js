@@ -30,9 +30,6 @@ const Host = (props) => {
     const { address, country, image, score} = currentHospital.body
     return (
         <div className="card shadow-lg border-0">
-
-           
-
             <img src={image} className="card-img-top" alt="data.name"/>
 
             <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ currentHospital.name }</h1>
