@@ -10,28 +10,29 @@ import Host from './Host'
 import Review from './Review'
 
 const Hospital = (props) => {
-     const [hospital, setHospital] = useState([])
+     const {currentHospital, setCurrentHospital} = useContext(HospitalsContext)
+
      const [loading, setLoading] = useState(true)
     const { slug } = props.match.params
     const {error, addError } = useContext(ErrorContext)
-    console.log(error)
+    console.log(currentHospital)
      useEffect(() => {
          // get individual hospital
          Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
          .then(res => {
              setLoading(false)
-             setHospital(res.data)
+             setCurrentHospital(res.data)
          }).catch(err => {
              addError(err)
             err.response.status === 404 && props.history.push('/404')
          })
-     }, [hospital.length])
+     }, [currentHospital.length])
 
-        const reviews_all = hospital.reviews ? hospital.reviews.reviews_all : null
-    const displayHospital = hospital.id ? (
+        const reviews_all = currentHospital.reviews ? currentHospital.reviews.reviews_all : null
+    const displayHospital = currentHospital.id ? (
         <div className="reviews my-2 py-3 col-sm-10 col-md-8 mx-auto">
             {error.data && <AlertContainer />  }
-            <Host hospital={hospital}/>
+            <Host hospital={currentHospital}/>
             <div className="card shadow-lg border-0 reviews my-3">
                     <h4 className="card-title my-3 text-center font-weight-bolder my-3 text-uppercase"> Reviews</h4>
                     <div className="card-body">

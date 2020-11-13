@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ReviewForm from './ReviewForm'
 import ReactStars from "react-rating-stars-component";
 import styled from 'styled-components';
 import Icofont from 'react-icofont';
 import AddHospital from '../Hospitals/AddHospital';
 import Axios from 'axios';
+import { HospitalsContext } from '../../contexts/HospitalsContext';
 
 const Rating =  styled.div`
     display: flex;
@@ -14,7 +15,9 @@ const Rating =  styled.div`
 
 const Host = (props) => {
     const { hospital } = props
-    const { slug } = hospital.body
+    const {currentHospital, setCurrentHospital } = useContext(HospitalsContext)
+    
+    const { slug } = currentHospital.body
 
     const handleClick = (e) => {
         const csrfToken = document.querySelector("[name=csrf-token]").content;
@@ -29,15 +32,15 @@ const Host = (props) => {
         })
     }
    
-    const { address, country, image, score} = hospital.body
+    const { address, country, image, score} = currentHospital.body
     return (
         <div className="card shadow-lg border-0">
             <img src={image} className="card-img-top" alt="data.name"/>
 
-            <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ hospital.name }</h1>
+            <h1 className="card-title display-6 my-3 text-uppercase text-center font-weight-bolder">{ currentHospital.name }</h1>
             <div className="actions">
                 <button className="btn border-0 remove" onClick={handleClick}>{<Icofont icon="bin" className="text-danger remove"></Icofont>}</button>
-                <AddHospital status="Update" hospital={hospital}/>
+                <AddHospital status="Update" hospital={currentHospital}/>
             </div>
             <Rating>
                 { <ReactStars
@@ -58,7 +61,7 @@ const Host = (props) => {
                </div>
 
                 <div className="btn-container mx-auto my-5">
-                    <ReviewForm hospital = {hospital}/>
+                    <ReviewForm hospital = {currentHospital}/>
                 </div>
             </div> 
         </div>

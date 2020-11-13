@@ -1,9 +1,9 @@
 class Hospital < ApplicationRecord
   has_many :reviews, dependent: :destroy
-
+  before_save :slugify
   validates :name, presence: true, uniqueness: true
-
-  before_create :slugify
+  validates :slug, uniqueness: true
+  
 
   def slugify
     self.slug = name.parameterize

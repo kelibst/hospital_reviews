@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import ReactStars from "react-rating-stars-component";
+import { HospitalsContext } from '../../contexts/HospitalsContext';
+import { useEffect } from 'react';
 const HospitalList = ({ data }) => {
     const {image, score, address, city, country, slug } = data.body
+
+    
     return (
         <div className="hospital card shadow-lg p-0 m-3 col-sm-4 col-xl-3">
             <div className="hospital-image">

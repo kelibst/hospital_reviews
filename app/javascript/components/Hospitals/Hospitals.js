@@ -7,6 +7,8 @@ import AlertContainer from '../containers/AlertContainer'
 import Loading from '../containers/Loading'
 import HospitalList from './HospitalList'
 import './hospitals.scss'
+
+
 const Hospitals = () => {
     const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
     const [loading, setLoading] = useState(true)
