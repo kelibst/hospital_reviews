@@ -3,7 +3,7 @@
 > This project it was built on top of my knowledge of RoR and React.
 <!-- > Idea and design by [Gregoire Veila](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details) -->
 
-![screenshot]()
+![screenshot](screenshot.gif)
 
 ## What it does
 
