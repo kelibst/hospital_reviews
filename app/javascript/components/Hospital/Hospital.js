@@ -16,7 +16,7 @@ const Hospital = (props) => {
      const {error, addError } = useContext(ErrorContext)
      useEffect(() => {
          // get individual hospital
-         Axios.get(`http://127.0.0.1:3000/api/v1/hospitals/${slug}.json`)
+         Axios.get(`/api/v1/hospitals/${slug}.json`)
          .then(res => {
              setLoading(false)
              setCurrentHospital(res.data)

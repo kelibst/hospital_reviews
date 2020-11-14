@@ -16,7 +16,7 @@ const Hospitals = () => {
 
     useEffect(() => {
         // get all the hospitals
-        Axios.get('api/v1/hospitals.json')
+        Axios.get('/api/v1/hospitals.json')
         .then(res => {
             setLoading(false)
             addNewHospital(res.data)
