@@ -3,7 +3,7 @@ import Icofont from 'react-icofont'
 
 const UserInfo = () => {
     return (
-        <div className="user-info">
+        <div className="user-info d-none d-sm-block">
             <div className="user-logo">
                 <Icofont icon="ui-user" />
             </div>

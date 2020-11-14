@@ -13,7 +13,7 @@ const Hospitals = () => {
     const  { hospitals, addNewHospital }  =  useContext(HospitalsContext)
     const [loading, setLoading] = useState(true)
     const  { error, addError }  =  useContext(ErrorContext)
-    console.log(error)
+
     useEffect(() => {
         // get all the hospitals
         Axios.get('api/v1/hospitals.json')
